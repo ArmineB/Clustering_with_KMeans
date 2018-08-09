@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+
+<html><head>
+  <meta charset="UTF-8">
+  <title>Hi</title>
+    <link href="http://fonts.googleapis.com/css?family=Titillium+Web:400,300,600" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+<style>
+  *, *:before, *:after {
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  font-family: 'Titillium Web', sans-serif;
+  text-align: center;
+  background-color: #F5F5F5;
+}
+
+a {
+  text-decoration: none;
+  color: #002462;
+  -webkit-transition: color .5s ease;
+  transition: color .5s ease;
+}
+
+a:hover {
+  color: #179b77;
+}
+
+#maincontent {
+  background-color: #FFF;
+  display: inline-block;
+  padding: 25px 50px;
+  width: 80%;
+  text-align: center;
+  margin: 20px auto 80px auto;
+  box-shadow: 0 4px 20px 4px rgba(19, 35, 47, 0.3);
+}
+
+#maincontent img {
+  float: left;
+  width: 47%;
+}
+
+#maincontent .form {
+  float: right;
+  width: 45%;
+}
+
+.about {
+  width: 80%;
+  text-align: center;
+  margin: auto;
+}
+
+.about ul, .about ol {
+  text-align: left;
+  display: inline-block;
+  margin: 0 0 5px 0;
+  padding-left: 30px;
+}
+
+.about p {
+  font-size: 17px;
+}
+
+.form-dashboard {
+  margin-bottom: 30px;
+}
+
+.tab-group {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 30px 0;
+}
+.tab-group li {
+  display: inline;
+  margin: -1px;
+}
+.tab-group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.tab-group li a {
+  text-decoration: none;
+  padding: 13px;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: #F9F9F9;
+  color: #DD1C13;
+  font-size: 19px;
+  display: inline-block;
+  width: 25%;
+  text-align: center;
+  cursor: pointer;
+  -webkit-transition: .5s ease;
+  transition: .5s ease;
+}
+
+.tab-group .active a,
+.tab-group li a:hover {
+  background: #002462;
+  color: #FFF;
+}
+
+.tab-content > div:last-child {
+  display: none;
+}
+
+h1 {
+  text-align: center;
+  color: #000;
+  font-weight: 300;
+  margin: 40px auto;
+}
+
+h2 {
+    margin: 0;
+}
+
+span {
+    color: #002462;
+    font-weight: bold;
+}
+
+p {
+  text-align: left;
+  color: #000;
+  margin: 20px 0px 10px 0px;
+  line-height: 24px;
+  font-size: 16px;
+}
+
+a.download {
+  display: block;
+  margin: 10px auto;
+  padding: 6px;
+  width: auto;
+  font-size: 18px;
+  text-align: center;
+  color: #012561;
+}
+
+a.download:hover {
+  text-decoration: underline;
+}
+
+div.info {
+    color: pink;
+    text-align: center;
+    padding: 8px;
+    border: 1px solid #DD1C13;
+    max-width: 600px;
+    margin: -20px auto 20px auto;
+    background: #66131c;
+}
+
+.form label {
+  position: absolute;
+  -webkit-transform: translateY(6px);
+  transform: translateY(6px);
+  left: 13px;
+  color: rgba(0, 0, 0, 0.5);
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+  -webkit-backface-visibility: hidden;
+  pointer-events: none;
+  font-size: 17px;
+  top: 2px;
+}
+.form label .req {
+  margin: 2px;
+  color: #E01B14;
+  position: absolute;
+  left: -26px;
+  font-size: 23px;
+  top: -12px;
+}
+
+.form label.active {
+  -webkit-transform: translateY(50px);
+          transform: translateY(50px);
+  left: 2px;
+  top: -14px;
+  font-size: 14px;
+}
+.form label.active .req {
+  opacity: 0;
+}
+
+.form label.highlight {
+  color: #000;
+}
+
+.form input, .form textarea {
+  font-size: 19px;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 5px 10px;
+  background: none;
+  background-image: none;
+  border: 1px solid #a0b3b0;
+  color: #000;
+  border-radius: 0;
+  -webkit-transition: border-color .25s ease, box-shadow .25s ease;
+  transition: border-color .25s ease, box-shadow .25s ease;
+}
+.form input:focus, .form textarea:focus {
+  outline: 0;
+  border-color: #002462;
+}
+
+.form textarea {
+  border: 2px solid #a0b3b0;
+  resize: vertical;
+}
+
+.form .field-wrap {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.form .top-row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.form .top-row > div {
+  float: left;
+  width: 48%;
+  margin-right: 4%;
+}
+.form .top-row > div:last-child {
+  margin: 0;
+}
+
+#maincontent .button {
+  float: right;
+}
+
+.button {
+  border: 0;
+  outline: none;
+  border-radius: 0;
+  padding: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  background: #002462;
+  color: #FFF;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.form .button:hover, .form .button:focus {
+  background: #002462;
+}
+
+.form .button-block {
+  display: block;
+  margin: auto;
+}
+
+.form .forgot {
+  margin-top: -20px;
+  text-align: right;
+}
+
+#csv_uploader {
+  margin: auto;
+  text-align: center;
+}
+
+span#filename, span#filenamedis {
+  color: #FFF;
+  font-size: 14px;
+  font-weight: normal;
+  position: absolute;
+  left: 42%;
+  text-transform: initial;
+}
+
+table#resulttable {
+  margin: 20px auto 50px auto;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-collapse: collapse;
+  text-align: left;
+  max-height: 600px;
+  overflow-y: scroll;
+  display: inline-block;
+}
+
+table#resulttable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+table#resulttable tr:nth-child(odd) {
+    background-color: #FFF;
+}
+
+table#resulttable tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table#resulttable td {
+  padding: 5px 12px;
+  font-size: 15px;
+  color: #808080;
+  box-sizing: border-box;
+}
+
+table#resulttable th {
+  padding: 7px 12px;
+  font-size: 18px;
+  color: #DD1A16;
+  box-sizing: border-box;
+  text-transform: capitalize;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+  border: none;
+  display: inline-block;
+  padding: 45px;
+  background-color: #012561;
+  font-size: 18px;
+  margin: 0px 0px 0px 0px;
+  text-transform: uppercase;
+  cursor: pointer;
+  width: 40%;
+  color: #FFF;
+  background-image: url(../img/upload.png);
+  background-repeat: no-repeat;
+  background-position: 26% center;
+  outline: none;
+  position: relative;
+}
+
+input#upload {
+  font-size: 18px;
+  padding: 45px;
+  margin: 0px 0px 0px -20px;
+  text-transform: uppercase;
+  cursor: pointer;
+  width: 40%;
+  height: auto;
+  -webkit-appearance: none;
+  background-color: #2E4D7C;
+  color: #FFF;
+  border: none;
+  background-image: url(../img/execute.png);
+  background-repeat: no-repeat;
+  background-position: 30% center;
+  outline: none;
+}
+
+.arrow-right {
+  height: 0;
+  width: 0;
+  border-top: 25px solid transparent;
+  border-bottom: 25px solid transparent;
+  border-left: 20px solid #012561;
+  display: inline-block;
+  z-index: 10;
+  position: relative;
+  top: 20px;
+}
+
+form.disabled .custom-file-upload {
+  background-color: #868686;
+}
+
+form.disabled .arrow-right {
+  border-left: 20px solid #868686;
+}
+
+form.disabled input#upload {
+  background-color: #5a5a5a;
+  filter: grayscale(100%);
+  opacity: 0.5;
+}
+
+.csv {
+  display: inline-block;
+  margin: 15px;
+  width: 100%;
+  text-align: left;
+  white-space: nowrap;
+}
+
+#menu {
+  padding: 8px 10% 14px 10%;
+  text-align: left;
+  margin: auto;
+  border-bottom: 1px solid #DD1C13;
+}
+
+#menu ul {
+  list-style-type: none;
+  padding: 18px 0px 18px 0px;
+  text-align: right;
+  display: inline-block;
+  float: right;
+  font-size: 17px;
+  font-weight: bold;
+  margin: 0;
+  border-bottom: 2px solid #002462;
+}
+
+#menu ul li {
+  display: inline;
+}
+
+#menu ul li a {
+  color: #000;
+  padding: 7px 15px 6px 15px;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+
+#menu ul li a:hover {
+  color: #DD1C13;
+}
+
+#menu ul li a.active {
+  background-image: url('../img/arrow.png');
+  background-repeat: no-repeat;
+  background-position: center bottom;
+}
+
+#menu .logo {
+  float: left;
+}
+
+#menu>div {
+  width: 335px;
+  display: inline-block;
+}
+
+#menu>div a#homelink {
+  display: inline-block;
+  text-decoration: none;
+  color: transparent;
+}
+
+#menu h1 {
+    font-size: 27px;
+    margin: 6px 0px 0px 6px;
+    display: inline-block;
+    text-align: left;
+}
+
+#menu h2 {
+    margin: -5px 0 0 6px;
+    text-align: left;
+    color: #2A2A2A;
+    display: inline-block;
+    clear: both;
+    font-size: 19px;
+}
+
+#menu h1>span:first-child {
+  color: #002462;
+}
+
+#menu h1>span:last-child {
+  color: #DD1C13;
+}
+
+#menu h3 {
+  text-align: right;
+  margin: 5px 75px -5px 0;
+  font-size: 16px;
+}
+
+#menu .dropdown img {
+  vertical-align: middle;
+}
+
+#menu .dropdown {
+  position: relative;
+  display: inline-block;
+  width: auto;
+  float: right;
+  right: 37px;
+  top: -13px;
+}
+
+#menu .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 135px;
+  padding: 12px;
+  z-index: 1;
+  right: 0;
+  top: 20px;
+  border: 1px solid #ccc;
+}
+
+#menu .dropdown:hover .dropdown-content {
+  display: block;
+}
+
+#menu a#settings,#menu a#logout {
+  color: #000;
+  font-size: 14px;
+}
+
+#menu a#logout button {
+  -webkit-appearance: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+}
+
+#menu p {
+  margin: 0;
+  text-align: left;
+}
+
+
+#footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #EAEAEA;
+  color: white;
+  text-align: center;
+}
+
+#footer a.social {
+  display: inline-block;
+  padding: 13px 7px;
+}
+
+.contact-container input[type=text], .contact-container input[type=password], .contact-container select, .contact-container textarea {
+  width: 100%;
+  padding: 13px 12px;
+  border: 1px solid #232323;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+  background-color: transparent;
+}
+
+.contact-container input[type=submit] {
+  background-color: #012561;
+  color: white;
+  text-transform: uppercase;
+  padding: 10px 18px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  margin: auto;
+  display: block;
+}
+
+.contact-container {
+  width: 35%;
+  margin: 30px auto 80px auto;
+  text-align: left;
+}
+
+.contact-container h1 {
+  margin: 30px 0;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+form .required {
+  position: relative;
+}
+
+form .required:after {
+  color: #E01B14;
+  font-size: 23px;
+  content: '*';
+  display:inline;
+  font-weight: bold;
+  position: absolute;
+  left: -12px;
+  top: 2px;
+}
+
+ol {
+  display: inline-block;
+  text-align: left;
+}
+
+ul#steps {
+  list-style: none;
+  padding: 20px;
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+ul#steps li b {
+  color: #DD1C13;
+  font-weight: bold;
+  font-size: 21px;
+  display: inline-block;
+  width: auto;
+  padding: 4px 11px;
+  margin: 10px auto;
+  text-align: center;
+  border: 2px solid #DD1C13;
+  border-radius: 50%;
+}
+
+ul#steps li span {
+  font-size: 25px;
+}
+
+ul#steps li img {
+  border: 1px solid #ddd;
+  margin: 15px auto;
+}
+
+.message {
+  text-align: center;
+  margin: 50px auto;
+  color: #035603;
+  font-size: 18px;
+}
+
+ul#howto1 {
+  padding: 0;
+  list-style: none;
+  margin: 0px 0px 15px 0px;
+}
+
+ul#howto1 li {
+  display: inline-block;
+  padding: 34px 20px 0px 80px;
+  width: 25.65%;
+  float: left;
+  height: 90px;
+  font-size: 18px;
+  color: white;
+  font-weight: bold;
+  position: relative;
+  opacity: 0.7;
+}
+
+ul#howto1 li:nth-child(1) {
+  background-color: #2EA6DB;
+  text-transform: uppercase;
+  height: 180px;
+  width: 23%;
+  text-align: center;
+  font-size: 20px;
+  padding: 95px 20px 0px 20px;
+}
+
+ul#howto1 li:nth-child(2) {
+  background-color: #982141;
+}
+
+ul#howto1 li:nth-child(3) {
+  background-color: #EA5F24;
+}
+
+ul#howto1 li:nth-child(4) {
+  background-color: #1B56A2;
+}
+
+ul#howto1 li:nth-child(5) {
+  background-color: #E31E27;
+}
+
+ul#howto1 li:nth-child(6) {
+  background-color: #F6A91B;
+}
+
+ul#howto1 li:nth-child(7) {
+  background-color: #56bd5a;
+}
+
+ul#howto1 li:before {
+  background-color: #0000004d;
+  padding: 6px 14px;
+  position: absolute;
+  font-size: 30px;
+  left: 20px;
+  top: 27%;
+  border-radius: 30px;
+}
+
+ul#howto1 li:nth-child(1):before {
+  content: "?";
+  left: 44%;
+  top: 14%;
+}
+
+ul#howto1 li:nth-child(2):before {
+  content: "1";
+}
+
+ul#howto1 li:nth-child(3):before {
+  content: "2";
+}
+
+ul#howto1 li:nth-child(4):before {
+  content: "3";
+}
+
+ul#howto1 li:nth-child(5):before {
+  content: "4";
+}
+
+ul#howto1 li:nth-child(6):before {
+  content: "5";
+}
+
+ul#howto1 li:nth-child(7):before {
+  content: "6";
+}
+
+p#howtop {
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+
+ul#howto2 {
+  padding: 0;
+  list-style: none;
+  margin: 0px;
+}
+
+ul#howto2 li {
+  display: inline-block;
+  padding: 100px 55px 20px 55px;
+  font-size: 17px;
+  position: relative;
+  width: 24%;
+  text-align: center;
+  vertical-align: top;
+}
+
+ul#howto2 li:before {
+  position: absolute;
+  font-size: 35px;
+  color: #DD1A16;
+  font-weight: bold;
+  top: 35px;
+  left: 0;
+  right: 0;
+  background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Red_Arrow_Right.svg/120px-Red_Arrow_Right.svg.png);
+  background-size: 40px;
+  background-repeat: no-repeat;
+  background-position: 66% center;
+}
+
+ul#howto2 li:nth-child(1):before {
+  content: "1";
+}
+
+ul#howto2 li:nth-child(2):before {
+  content: "2";
+}
+
+ul#howto2 li:nth-child(3):before {
+  content: "3";
+}
+
+ul#howto2 li:nth-child(4):before {
+  content: "4";
+}
+</style>
+<body>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-119976479-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-119976479-1');
+</script>
+
+ <div class="about">
+    <br>
+    <p id="howtop">How does this app work?</p>
+    <ul id="howto2">
+      <li>Upload the dataset</li>
+      <li>Choose features and number of clusters</li>
+      <li>Getting the results</li>
+      <li>Sending the results to email</li>
+    </ul>
+    <p id="howtop" style="color: #DD1C13">The first column of the file is the data identifier</p>
+  </div>
+
+  <div class="form-dashboard">
+
+
+
+
+	<form action="/upload" method="post" id="csv_uploader" enctype="multipart/form-data"><label class="custom-file-upload"><input type="file" name="fileToUpload" id="fileToUpload" accept=".csv">Choose File<br><span id="filename"></span></label><div class="arrow-right"></div><input type="submit" id="upload" value="Next"></form>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="js/index.js"></script>
+
+   </div>
+</body></html>
+
+
+

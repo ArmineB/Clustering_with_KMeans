@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/css/bootstrap-select.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/js/bootstrap-select.min.js"></script>
+
+<style>
+
+ body {
+  font-family: 'Titillium Web', sans-serif;
+     text-align: center;
+  background-color: #F5F5F5;
+}
+    .Sub {
+height:50px;
+width:150px;
+background: #002462;
+color: #fff;
+border: 3px solid #eee;
+border-radius: 20px;
+box-shadow: 5px 5px 5px #eee;
+text-shadow:none;
+}
+.Sub:hover {
+background: #016ABC;
+color: #fff;
+border: 3px solid #eee;
+border-radius: 20px;
+box-shadow: 5px 5px 5px #eee;
+text-shadow:none;
+}
+</style>
+</head>
+
+<body>
+
+<h2>Please choose number of clusters</h2>
+<hr style="height:3px;border-top:1px solid #982141" />
+<!--surround the select box with a "custom-select" DIV element. Remember to set the width:-->
+<div >
+  <form  action="/clustering" method="post" >
+  <select class="selectpicker" name="k">
+    {% for elem in range(2,maxK) %}
+       <option name="k"  value={{ elem }}>{{ elem }}</option>
+        <br>
+    {% endfor %}
+  </select>
+  <input type="submit" value="Submit" class="Sub">
+  </form>
+</div>
+<br>
+<div>
+    <h2>If you want we can choose an optimal number of clusters</h2>
+    <hr style="height:3px;border-top:1px solid #982141" />
+    <form action="/optimalClustering" method="post"  >
+    <input type="submit" value="Ok" class="Sub">
+        </form>
+</div>
+
+
+</body>
+</html>
